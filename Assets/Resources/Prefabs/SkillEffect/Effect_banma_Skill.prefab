@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2476000741058496409}
   - component: {fileID: 2345954220848573719}
   - component: {fileID: 2344340413668452379}
-  - component: {fileID: -8086572975879840063}
+  - component: {fileID: 9000008061756029043}
   m_Layer: 0
   m_Name: Effect_banma_Skill
   m_TagString: Untagged
@@ -4762,7 +4762,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &-8086572975879840063
+--- !u!114 &9000008061756029043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4771,7 +4771,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2470227967158195381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac84bf2156bae0246842add29366d319, type: 3}
+  m_Script: {fileID: 11500000, guid: 4551fabd653e32242b850f568d67fa4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2470259965582134029

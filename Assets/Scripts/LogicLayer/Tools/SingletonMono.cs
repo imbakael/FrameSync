@@ -9,8 +9,7 @@ public class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T> {
             if (instance == null) {
                 instance = FindObjectOfType<T>();
                 if (instance == null) {
-                    GameObject obj = new GameObject(typeof(T).Name);
-                    instance = obj.AddComponent<T>();
+                    instance = new GameObject(typeof(T).Name).AddComponent<T>();
                 }
             }
             return instance;

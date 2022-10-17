@@ -5,11 +5,12 @@ using UnityEngine;
 public class GameMain : MonoBehaviour {
     private void Awake() {
         WorldManager.Initialize();
-        List<HeroData> playerHeroList = new List<HeroData>();
-        List<HeroData> enemyHeroList = new List<HeroData>();
-        List<int> heroIdList = new List<int> { 101, 102, 103, 104, 105, 501, 502, 503, 504, 505 };
+        var playerHeroList = new List<HeroData>();
+        var enemyHeroList = new List<HeroData>();
+        var heroIdList = new List<int> { 101, 102, 103, 104, 105, 501, 502, 503, 504, 505 };
         for (int i = 0; i < heroIdList.Count; i++) {
-            HeroData heroData = new HeroData();
+            var heroData = new HeroData();
+            heroData.hp = 100;
             if (i < 5) {
                 heroData.id = heroIdList[i];
                 heroData.seatid = i;

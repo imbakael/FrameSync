@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicBehaviour : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class LogicBehaviour {
+    public RenderObject RenderObj { get; protected set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public VInt3 LogicPosition { get; set; }
+
+    public virtual void OnCreate() { }
+
+    public virtual void OnLogicFrameUpdate() { }
+
+    public virtual void OnDestroy() { }
 }

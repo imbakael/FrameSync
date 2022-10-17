@@ -11,7 +11,8 @@ public class HeroData {
     public int hp;
     public int atk;
     public int def;
-    public int atkRange;
+    public int agl;
+    public int atkRage;
     public int takeDamageRage;
     public int maxRage;
 

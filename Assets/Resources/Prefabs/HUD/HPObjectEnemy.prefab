@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2419243991389726964}
-  - component: {fileID: 2653391093353797674}
+  - component: {fileID: 1960156847311090257}
   m_Layer: 5
   m_Name: HPObjectEnemy
   m_TagString: Untagged
@@ -192,7 +192,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2653391093353797674
+--- !u!114 &1960156847311090257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,10 +201,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2419243991389726971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912df2d3427167c47ac9c9729d54c90b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ab880bea67c4ef4c9f5b696f47061d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffItemList: []
   hpSlider: {fileID: 2419243991613923346}
   hpDamageAnimSlider: {fileID: 3797805216091420017}
   angerSlider: {fileID: 2419243991877930939}

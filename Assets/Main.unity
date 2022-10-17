@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 249134496}
   - component: {fileID: 249134495}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +472,7 @@ Transform:
   m_Children:
   - {fileID: 459078795}
   m_Father: {fileID: 521274257}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &249134495
 MeshRenderer:
@@ -551,8 +551,8 @@ Transform:
   - {fileID: 914928729}
   - {fileID: 2015696799}
   - {fileID: 884330260}
-  - {fileID: 704917465}
   - {fileID: 777916000}
+  - {fileID: 704917465}
   m_Father: {fileID: 1809175444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -956,8 +956,8 @@ Transform:
   - {fileID: 2009667729}
   - {fileID: 1869813268}
   - {fileID: 1825612142}
-  - {fileID: 249134494}
   - {fileID: 1176235529}
+  - {fileID: 249134494}
   m_Father: {fileID: 1809175444}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 704917467}
   - component: {fileID: 704917466}
   m_Layer: 0
-  m_Name: 4
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1465,7 @@ Transform:
   m_Children:
   - {fileID: 814124044}
   m_Father: {fileID: 300776685}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &704917466
 MeshRenderer:
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 777916002}
   - component: {fileID: 777916001}
   m_Layer: 0
-  m_Name: 5
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1703,7 +1703,7 @@ Transform:
   m_Children:
   - {fileID: 1868413122}
   m_Father: {fileID: 300776685}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &777916001
 MeshRenderer:
@@ -2859,7 +2859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1080947519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3174,7 +3174,7 @@ GameObject:
   - component: {fileID: 1176235531}
   - component: {fileID: 1176235530}
   m_Layer: 0
-  m_Name: 5
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3193,7 +3193,7 @@ Transform:
   m_Children:
   - {fileID: 1640745521}
   m_Father: {fileID: 521274257}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1176235530
 MeshRenderer:
@@ -4038,14 +4038,17 @@ MonoBehaviour:
   - {fileID: 2009667729}
   - {fileID: 1869813268}
   - {fileID: 1825612142}
-  - {fileID: 249134494}
   - {fileID: 1176235529}
+  - {fileID: 249134494}
   enemyTransArr:
   - {fileID: 914928729}
   - {fileID: 2015696799}
   - {fileID: 884330260}
-  - {fileID: 704917465}
   - {fileID: 777916000}
+  - {fileID: 704917465}
+  HUDWindowTrans: {fileID: 1178102123632018978}
+  camera3D: {fileID: 963194227}
+  uiCamera: {fileID: 1065413756}
 --- !u!1 &1521939194
 GameObject:
   m_ObjectHideFlags: 0

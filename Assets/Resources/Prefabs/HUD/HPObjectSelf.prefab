@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3495636410902702718}
-  - component: {fileID: 3873837265998797472}
+  - component: {fileID: 1189934722142616114}
   m_Layer: 5
   m_Name: HPObjectSelf
   m_TagString: Untagged
@@ -154,7 +154,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3873837265998797472
+--- !u!114 &1189934722142616114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,10 +163,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3495636410902702705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912df2d3427167c47ac9c9729d54c90b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ab880bea67c4ef4c9f5b696f47061d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffItemList: []
   hpSlider: {fileID: 3495636411127423640}
   hpDamageAnimSlider: {fileID: 9109070378303487345}
   angerSlider: {fileID: 3495636412465630513}

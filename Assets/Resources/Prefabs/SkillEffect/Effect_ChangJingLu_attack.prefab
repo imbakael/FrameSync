@@ -38505,7 +38505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1422676965948009321}
-  - component: {fileID: -9168028315212822082}
+  - component: {fileID: -9129038921656916194}
   m_Layer: 0
   m_Name: Effect_ChangJingLu_attack
   m_TagString: Untagged
@@ -38528,7 +38528,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-9168028315212822082
+--- !u!114 &-9129038921656916194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38537,7 +38537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417159875187487687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac84bf2156bae0246842add29366d319, type: 3}
+  m_Script: {fileID: 11500000, guid: 4551fabd653e32242b850f568d67fa4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1417394577461875849

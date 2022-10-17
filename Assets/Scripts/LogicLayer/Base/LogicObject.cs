@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicObject : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public enum LogicObjectState {
+    Survival,
+    Death,
+    SurvivalWaiting
+}
+
+public class LogicObject : LogicBehaviour {
+
+    public LogicObjectState objectState = LogicObjectState.Survival;
+
+    public void SetRenderObject(RenderObject renderObject) {
+        objectState = LogicObjectState.Survival;
+        RenderObj = renderObject;
+        LogicPosition = new VInt3(renderObject.gameObject.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void OnDestroy() {
+        base.OnDestroy();
+#if CLIENT_LOGIC
+        RenderObj.OnRelease();
+#endif
     }
 }

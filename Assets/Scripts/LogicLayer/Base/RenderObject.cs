@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class RenderObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public LogicObject LogicObj { get; private set; }
+
+    public virtual void SetLogicObject(LogicObject logicObject) {
+        LogicObj = logicObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual void Update() {
+        if (LogicObj == null) {
+            return;
+        }
+        transform.position = Vector3.Lerp(transform.position, LogicObj.LogicPosition.vec3, BattleWorld.deltaTime);
+    }
+
+    public virtual void OnRelease() {
+        GameObject.Destroy(gameObject);
     }
 }
