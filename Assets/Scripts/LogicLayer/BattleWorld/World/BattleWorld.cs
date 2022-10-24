@@ -30,11 +30,8 @@ public class BattleWorld {
         OnLogicFrameUpdate();
 #endif
         if (Input.GetKeyDown(KeyCode.Q)) {
-            Debugger.Log("计时开始 ： " + Time.realtimeSinceStartup);
             heroLogic.heroList[0].PlayAnim("Attack");
             var moveTo = new MoveToAction(heroLogic.heroList[0], heroLogic.enemyList[0].LogicPosition, new VInt(1000), () => {
-                Debugger.Log("计时结束 ： " + Time.realtimeSinceStartup);
-                Debugger.Log("移动完成 = " + heroLogic.heroList[0].LogicPosition);
                 SkillEffect effect = ResourceManager.Instance.LoadObject<SkillEffect>("Prefabs/SkillEffect/Effect_RenMa_hit");
                 effect.SetEffectPos(heroLogic.enemyList[0].LogicPosition);
                 heroLogic.enemyList[0].DamageHP(30);
@@ -42,9 +39,7 @@ public class BattleWorld {
             ActionManager.Instance.RunAction(moveTo);
         }
         if (Input.GetKeyDown(KeyCode.W)) {
-            var moveTo = new MoveToAction(heroLogic.heroList[0], new VInt3(BattleWorldNodes.Instance.heroTransArr[0].position), 1000, () => {
-                Debugger.Log("移动完成 = " + heroLogic.heroList[0].LogicPosition);
-            });
+            var moveTo = new MoveToAction(heroLogic.heroList[0], new VInt3(BattleWorldNodes.Instance.heroTransArr[0].position), 1000, null);
             ActionManager.Instance.RunAction(moveTo);
         }
     }

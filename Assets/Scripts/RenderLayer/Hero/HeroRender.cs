@@ -1,13 +1,10 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HeroRender : RenderObject
 {
     public HeroData HeroData { get; private set; }
-
     public HeroTeamEnum HeroTeam { get; private set; }
 
     private Animator animator;
