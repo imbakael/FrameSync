@@ -51,6 +51,12 @@ public class HeroRender : RenderObject
         heroHUDComponent.UpdateHPSlider(hpRate);
     }
 
+    public void UpdateAngerHud(float rate) {
+        if (heroHUDComponent != null) {
+            heroHUDComponent.UpdateAngerSlider(rate);
+        }
+    }
+
     public Vector3 World3DToCanvasPos(Vector3 targetPos) {
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(BattleWorldNodes.Instance.camera3D, targetPos);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(BattleWorldNodes.Instance.HUDWindowTrans as RectTransform,

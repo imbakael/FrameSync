@@ -10,7 +10,11 @@ public class GameMain : MonoBehaviour {
         var heroIdList = new List<int> { 101, 102, 103, 104, 105, 501, 502, 503, 504, 505 };
         for (int i = 0; i < heroIdList.Count; i++) {
             var heroData = new HeroData();
-            heroData.hp = 100;
+            heroData.hp = 10000;
+            heroData.atk = 1000;
+            heroData.def = 300;
+            heroData.atkRage = 20;
+            heroData.takeDamageRage = 25;
             if (i < 5) {
                 heroData.id = heroIdList[i];
                 heroData.seatid = i;

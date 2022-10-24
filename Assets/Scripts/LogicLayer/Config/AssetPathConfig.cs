@@ -5,4 +5,5 @@ public class AssetPathConfig {
     public const string HUD = PREFABS + "HUD/";
     public const string SKILL_EFFECT = PREFABS + "SkillEffect/";
     public const string BUFF_EFFECT = PREFABS + "BuffEffect/";
+    public const string SKILL_CONFIG = "Skill/";
 }

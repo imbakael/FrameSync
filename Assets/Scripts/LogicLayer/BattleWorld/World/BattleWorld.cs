@@ -44,6 +44,14 @@ public class BattleWorld {
             var moveTo = new MoveToAction(heroLogic.heroList[0], new VInt3(BattleWorldNodes.Instance.heroTransArr[0].position), 1000, null);
             ActionManager.Instance.RunAction(moveTo);
         }
+        if (Input.GetKeyDown(KeyCode.A)) {
+            SkillManager.Instance.ReleaseSkill(1010, heroLogic.heroList[0], true);
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            heroLogic.heroList[0].TryClearRage();
+            SkillManager.Instance.ReleaseSkill(1011, heroLogic.heroList[0], false);
+            heroLogic.heroList[0].UpdateAnger(0);
+        }
     }
 
     public void OnLogicFrameUpdate() {

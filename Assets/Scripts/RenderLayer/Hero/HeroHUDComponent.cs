@@ -22,4 +22,9 @@ public class HeroHUDComponent : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void UpdateAngerSlider(float value) {
+        angerSlider.value = value;
+        angerSlider.gameObject.SetActive(value != 0);
+    }
 }

@@ -31,12 +31,13 @@ public class HeroLogic : LogicObject {
         atk = heroData.atk;
         def = heroData.def;
         agl = heroData.agl;
-        rage = heroData.atkRage;
-        MaxHP = 100;
+        rage = 0;
+        MaxHP = 10000;
     }
     public override void OnCreate() {
         base.OnCreate();
         HeroRender = (HeroRender)RenderObj;
+        UpdateAnger(rage);
         //Debugger.Log("heroname = " + RenderObj.gameObject.name);
     }
 
@@ -60,6 +61,23 @@ public class HeroLogic : LogicObject {
         float hpRate = hp.RawFloat / MaxHP.RawFloat;
         HeroRender.UpdateHPHud(damageHp.RawInt, hpRate);
 #endif
+    }
+
+    public void UpdateAnger(VInt anger) {
+        rage += anger;
+        if (rage > MaxRage) {
+            rage = MaxRage;
+        }
+#if RENDER_LOGIC
+        float rate = (rage / MaxRage).RawFloat;
+        HeroRender.UpdateAngerHud(rate);
+#endif
+    }
+
+    public void TryClearRage() {
+        if (rage >= MaxRage) {
+            rage = 0;
+        }
     }
 
     private void HeroDeath() {

@@ -56,7 +56,7 @@ public class SkillConfig : ScriptableObject {
         hideBullet = skillType != SkillType.Ballistic;
     }
 
-    public void DamageTypeChange(DamageType damageType) {
+    public void DamageTypeChange(DamageType damageType) { 
         hideDamagePercentage = damageType != DamageType.AtkPercentage && damageType != DamageType.HpPercentage;
     }
 }

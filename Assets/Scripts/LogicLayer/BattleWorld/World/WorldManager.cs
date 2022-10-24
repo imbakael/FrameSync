@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class WorldManager {
 
-    private static BattleWorld battleWorld;
+    public static BattleWorld BattleWorld { get; private set; }
     public static void Initialize() {
 
     }
 
     public static void CreateBattleWorld(List<HeroData> playerHeroList, List<HeroData> enemyHeroList) {
-        battleWorld = new BattleWorld();
-        battleWorld.OnCreateWorld(playerHeroList, enemyHeroList);
+        BattleWorld = new BattleWorld();
+        BattleWorld.OnCreateWorld(playerHeroList, enemyHeroList);
     }
 
     public static void OnUpdate() {
-        if (battleWorld != null) {
-            battleWorld.OnUpdate();
+        if (BattleWorld != null) {
+            BattleWorld.OnUpdate();
         }
     }
 
     public static void DestroyWorld() {
-        battleWorld.OnDestroyWorld();
+        BattleWorld.OnDestroyWorld();
     }
 }
