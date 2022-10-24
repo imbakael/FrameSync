@@ -34,9 +34,12 @@ public class BattleWorld {
             var moveTo = new MoveToAction(heroLogic.heroList[0], heroLogic.enemyList[0].LogicPosition, new VInt(1000), () => {
                 SkillEffect effect = ResourceManager.Instance.LoadObject<SkillEffect>("Prefabs/SkillEffect/Effect_RenMa_hit");
                 effect.SetEffectPos(heroLogic.enemyList[0].LogicPosition);
-                heroLogic.enemyList[0].DamageHP(30);
+                //heroLogic.enemyList[0].DamageHP(30);
             });
             ActionManager.Instance.RunAction(moveTo);
+            LogicTimerManager.Instance.DelayCall(700, () => {
+                heroLogic.enemyList[0].DamageHP(30);
+            });
         }
         if (Input.GetKeyDown(KeyCode.W)) {
             var moveTo = new MoveToAction(heroLogic.heroList[0], new VInt3(BattleWorldNodes.Instance.heroTransArr[0].position), 1000, null);
@@ -48,6 +51,7 @@ public class BattleWorld {
         heroLogic?.OnLogicFrameUpdate();
         roundLogic?.OnLogicFrameUpdate();
         ActionManager.Instance.OnLogicFrameUpdate();
+        LogicTimerManager.Instance.OnLogicFrameUpdate();
     }
 
     public void OnDestroyWorld() {
