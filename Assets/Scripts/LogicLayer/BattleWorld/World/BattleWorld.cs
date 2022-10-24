@@ -34,7 +34,6 @@ public class BattleWorld {
             var moveTo = new MoveToAction(heroLogic.heroList[0], heroLogic.enemyList[0].LogicPosition, new VInt(1000), () => {
                 SkillEffect effect = ResourceManager.Instance.LoadObject<SkillEffect>("Prefabs/SkillEffect/Effect_RenMa_hit");
                 effect.SetEffectPos(heroLogic.enemyList[0].LogicPosition);
-                //heroLogic.enemyList[0].DamageHP(30);
             });
             ActionManager.Instance.RunAction(moveTo);
             LogicTimerManager.Instance.DelayCall(700, () => {
