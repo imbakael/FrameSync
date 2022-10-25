@@ -6,4 +6,6 @@ public class BattleWorldNodes : SingletonMono<BattleWorldNodes> {
     public Transform HUDWindowTrans;
     public Camera camera3D;
     public Camera uiCamera;
+
+    public RoundWindow roundWindow;
 }

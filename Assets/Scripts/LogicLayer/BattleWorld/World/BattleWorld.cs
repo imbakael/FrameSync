@@ -8,6 +8,10 @@ public class BattleWorld {
     public HeroLogicCtrl heroLogic;
     public RoundLogicCtrl roundLogic;
 
+    public int quickMultiple = 1;
+    private int maxQuickMultiple = 3;
+    public bool battlePause = false;
+
     private float accLogicRuntime;
     private float nextLogicFrameTime;
     public static float deltaTime;
@@ -19,8 +23,11 @@ public class BattleWorld {
         roundLogic.OnCreate();
         battleEnd = false;
     }
-     
+
     public void OnUpdate() {
+        if (battleEnd || battlePause) {
+            return;
+        }
 #if CLIENT_LOGIC
         accLogicRuntime += Time.deltaTime;
         while (accLogicRuntime > nextLogicFrameTime) {
@@ -71,6 +78,21 @@ public class BattleWorld {
         ActionManager.Instance.OnLogicFrameUpdate();
         LogicTimerManager.Instance.OnLogicFrameUpdate();
         BulletManager.Instance.OnLogicFrameUpdate();
+    }
+
+    public void PauseBattle() {
+        battlePause = !battlePause;
+        Time.timeScale = battlePause ? 0 : quickMultiple;
+    }
+
+    public void QuickBattle() {
+#if RENDER_LOGIC
+        quickMultiple++;
+        if (quickMultiple > maxQuickMultiple) {
+            quickMultiple = 1;
+        }
+        Time.timeScale = quickMultiple;
+#endif
     }
 
     public void OnDestroyWorld() {

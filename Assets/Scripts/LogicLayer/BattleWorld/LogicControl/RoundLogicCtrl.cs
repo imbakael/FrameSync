@@ -15,11 +15,17 @@ public class RoundLogicCtrl : ILogicBehaviour {
 
     public void OnCreate() {
         heroLogicCtrl = WorldManager.BattleWorld.heroLogic;
-        NextRoundStart();
+#if RENDER_LOGIC
+        BattleWorldNodes.Instance.roundWindow.RoundStart(RoundId);
+#endif
+        LogicTimerManager.Instance.DelayCall(2000, NextRoundStart);
     }
 
     public void NextRoundStart() {
         RoundId++;
+#if RENDER_LOGIC
+        BattleWorldNodes.Instance.roundWindow.NextRound(RoundId);
+#endif
         foreach (var item in heroLogicCtrl.allHeroList) {
             item.RoundStartEvent(RoundId);
         }

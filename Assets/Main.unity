@@ -785,7 +785,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2141706354}
-        m_MethodName: PauseBattleButtonClick
+        m_MethodName: GamePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1604,7 +1604,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1369686017}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 65, y: -61.1, z: 0}
 --- !u!1 &718217865
 GameObject:
@@ -3837,12 +3837,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295227523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.507008, y: 44.482334, z: -135.43437}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1541.6794, y: 3101.4844, z: -10859.577}
+  m_LocalScale: {x: 68.70229, y: 68.70229, z: 68.70229}
   m_Children:
   - {fileID: 1932301486}
-  m_Father: {fileID: 1369686017}
-  m_RootOrder: 1
+  m_Father: {fileID: 2141706350}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344688726
 GameObject:
@@ -3876,7 +3876,7 @@ RectTransform:
   m_Children:
   - {fileID: 1521939195}
   m_Father: {fileID: 2141706350}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3926,7 +3926,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2141706354}
+      - m_Target: {fileID: 0}
         m_MethodName: JumpButtonClick
         m_Mode: 1
         m_Arguments:
@@ -4004,7 +4004,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
-  - {fileID: 1295227524}
   - {fileID: 1809175444}
   - {fileID: 705507995}
   m_Father: {fileID: 0}
@@ -4049,6 +4048,7 @@ MonoBehaviour:
   HUDWindowTrans: {fileID: 1178102123632018978}
   camera3D: {fileID: 963194227}
   uiCamera: {fileID: 1065413756}
+  roundWindow: {fileID: 2141706354}
 --- !u!1 &1521939194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,7 +4563,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2141706354}
-        m_MethodName: QuickenButtonClick
+        m_MethodName: OnQuickGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4757,7 +4757,7 @@ Transform:
   - {fileID: 2055587314}
   - {fileID: 1219145887}
   m_Father: {fileID: 1369686017}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825612141
 GameObject:
@@ -6164,7 +6164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2141706350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6181,6 +6181,7 @@ RectTransform:
   - {fileID: 494260263}
   - {fileID: 1747320779}
   - {fileID: 501854815}
+  - {fileID: 1295227524}
   - {fileID: 1344688727}
   m_Father: {fileID: 583809840}
   m_RootOrder: 3
@@ -6259,9 +6260,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2141706349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e88c7cd2b4b0914f8ee3f0a95b87e2d, type: 3}
+  m_Script: {fileID: 11500000, guid: cb9b0b433996f584485f57abb69a88ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundStartAnim: {fileID: 2030646778}
+  roundText: {fileID: 1786261604}
+  logicFrameText: {fileID: 501854817}
+  quickMultipleText: {fileID: 1903257478}
 --- !u!114 &1178102123632018976
 MonoBehaviour:
   m_ObjectHideFlags: 0
