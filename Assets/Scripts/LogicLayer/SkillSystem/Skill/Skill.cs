@@ -144,5 +144,6 @@ public class Skill {
 
     public void SkillEnd() {
         Debugger.Log("Skillend " + SkillId);
+        skillOwner.ActionEnd();
     }
 }

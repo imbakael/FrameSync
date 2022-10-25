@@ -31,8 +31,8 @@ public class HeroLogic : LogicObject {
         atk = heroData.atk;
         def = heroData.def;
         agl = heroData.agl;
+        MaxHP = hp;
         rage = 0;
-        MaxHP = 10000;
     }
     public override void OnCreate() {
         base.OnCreate();
@@ -43,6 +43,26 @@ public class HeroLogic : LogicObject {
 
     public override void OnLogicFrameUpdate() {
         base.OnLogicFrameUpdate();
+    }
+
+    public override void ActionStart() {
+        base.ActionStart();
+        if (objectState == LogicObjectState.Death) {
+            ActionEnd();
+            return;
+        }
+        bool isNormal = rage < MaxRage;
+        if (rage >= MaxRage) {
+            rage = 0;
+        }
+        int skillId = isNormal ? HeroData.skillidArr[0] : HeroData.skillidArr[1];
+        SkillManager.Instance.ReleaseSkill(skillId, this, isNormal);
+        UpdateAnger(0);
+    }
+
+    public override void ActionEnd() {
+        base.ActionEnd();
+        OnActionEnd?.Invoke();
     }
 
     public void DamageHP(VInt damageHp) {
@@ -81,7 +101,10 @@ public class HeroLogic : LogicObject {
     }
 
     private void HeroDeath() {
-        
+        objectState = LogicObjectState.Death;
+#if RENDER_LOGIC
+        HeroRender.Death();
+#endif
     }
 
     public void PlayAnim(string animName) {

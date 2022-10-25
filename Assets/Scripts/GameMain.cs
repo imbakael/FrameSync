@@ -9,18 +9,11 @@ public class GameMain : MonoBehaviour {
         var enemyHeroList = new List<HeroData>();
         var heroIdList = new List<int> { 101, 102, 103, 104, 105, 501, 502, 503, 504, 505 };
         for (int i = 0; i < heroIdList.Count; i++) {
-            var heroData = new HeroData();
-            heroData.hp = 10000;
-            heroData.atk = 1000;
-            heroData.def = 300;
-            heroData.atkRage = 20;
-            heroData.takeDamageRage = 25;
+            HeroData heroData = ConfigCenter.GetHeroData(heroIdList[i]);
             if (i < 5) {
-                heroData.id = heroIdList[i];
                 heroData.seatid = i;
                 playerHeroList.Add(heroData);
             } else {
-                heroData.id = heroIdList[i];
                 heroData.seatid = i - 5;
                 enemyHeroList.Add(heroData);
             }

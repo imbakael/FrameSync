@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum HeroTeamEnum {
@@ -51,6 +52,20 @@ public class HeroLogicCtrl : ILogicBehaviour {
                 return attackTeam == HeroTeamEnum.Enemy ? heroList : enemyList;
         }
         return null;
+    }
+
+    public Queue<HeroLogic> CalcuAttackSort() {
+        Queue<HeroLogic> queue = new Queue<HeroLogic>();
+        allHeroList.Sort((x, y) => y.Agl.CompareTo(x.Agl));
+        foreach (var item in allHeroList) {
+            queue.Enqueue(item);
+        }
+        return queue;
+    }
+
+    public bool HeroIsAllDead(HeroTeamEnum heroTeam) {
+        var list = heroTeam == HeroTeamEnum.Self ? heroList : enemyList;
+        return !list.Any(t => t.objectState == LogicObjectState.Survival);
     }
         
     public void OnDestroy() {

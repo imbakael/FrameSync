@@ -64,6 +64,11 @@ public class HeroRender : RenderObject
         return uguiLocalPos;
     }
 
+    public void Death() {
+        PlayAnim("Death");
+        heroHUDComponent.gameObject.SetActive(false);
+    }
+
     public override void OnRelease() {
         base.OnRelease();
     }

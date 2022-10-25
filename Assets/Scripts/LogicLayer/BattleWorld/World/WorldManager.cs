@@ -6,7 +6,7 @@ public class WorldManager {
 
     public static BattleWorld BattleWorld { get; private set; }
     public static void Initialize() {
-
+        ConfigCenter.Initialized();
     }
 
     public static void CreateBattleWorld(List<HeroData> playerHeroList, List<HeroData> enemyHeroList) {

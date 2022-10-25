@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BattleWorld {
 
+    public static bool battleEnd;
+
     public HeroLogicCtrl heroLogic;
     public RoundLogicCtrl roundLogic;
 
@@ -15,6 +17,7 @@ public class BattleWorld {
         roundLogic = new RoundLogicCtrl();
         heroLogic.OnCreate(playerHeroList, enemyHeroList);
         roundLogic.OnCreate();
+        battleEnd = false;
     }
      
     public void OnUpdate() {
