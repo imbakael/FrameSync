@@ -14,6 +14,7 @@ public class RoundLogicCtrl : ILogicBehaviour {
     private HeroLogicCtrl heroLogicCtrl;
 
     public void OnCreate() {
+        heroLogicCtrl = WorldManager.BattleWorld.heroLogic;
         NextRoundStart();
     }
 

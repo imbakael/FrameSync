@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ceef0e98bfa2e34a9de48bfb6c79f6a, type: 3}
-  m_Name: 1040
+  m_Name: 5030
   m_EditorClassIdentifier: 
-  hideBullet: 0
+  hideBullet: 1
   hideDamagePercentage: 1
-  skillIcon: {fileID: 21300000, guid: e4989c78b8958ef4eb1f9d76748ebed6, type: 3}
-  skillId: 1040
-  skillName: "\u9F99\u738B\u666E\u901A\u653B\u51FB"
+  skillIcon: {fileID: 21300000, guid: 74a6ed17658b8b0429d4322bc10d654e, type: 3}
+  skillId: 5030
+  skillName: "\u7280\u725B\u666E\u653B"
   needRageValue: 0
-  skillShakeBeforeTimeMs: 800
+  skillShakeBeforeTimeMs: 700
   skillAttackDurationMs: 300
   skillShakeAfterTimeMs: 500
-  skillType: 4
+  skillType: 0
   targetType: 2
   skillAttackType: 0
   damageType: 1
   damagePercentage: 0
-  bullet: Effect_LongWang_attack
+  bullet: 
   skillAnim: Attack
   skillAudio: {fileID: 0}
-  skillEffect: 
-  skillHitEffect: 
+  skillEffect: Effect_XiNiu_attack
+  skillHitEffect: Effect_XiNiu_mingzhong
   addBuffs: 
-  skillDes: "\u9F99\u738B\u666E\u653B"
+  skillDes: "\u666E\u901A\u653B\u51FB"

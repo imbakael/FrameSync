@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideBullet: 1
   hideDamagePercentage: 1
-  skillIcon: {fileID: 21300000, guid: 9b338e2ff7e08a34b89f60d203dc4f87, type: 3}
+  skillIcon: {fileID: 21300000, guid: 1894898e0fa6d134a924814ab0773203, type: 3}
   skillId: 1010
   skillName: "\u4EBA\u9A6C\u666E\u901A\u653B\u51FB"
   needRageValue: 100

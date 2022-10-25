@@ -138,7 +138,7 @@ public class Skill {
         Transform[] seatTransArr = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? BattleWorldNodes.Instance.enemyTransArr : BattleWorldNodes.Instance.heroTransArr;
         seatPos = new VInt3(seatTransArr[skillOwner.HeroData.seatid].position);
 #endif
-        var action = new MoveToAction(skillOwner, seatPos, (VInt)SkillConfig.skillShakeAfterTimeMs, moveFinish);
+        var action = new MoveToAction(skillOwner, seatPos, SkillConfig.skillShakeAfterTimeMs, moveFinish);
         ActionManager.Instance.RunAction(action);
     }
 
