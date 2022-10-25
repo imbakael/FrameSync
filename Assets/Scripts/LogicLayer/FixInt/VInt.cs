@@ -71,8 +71,6 @@ public struct VInt:IComparable<VInt>
         return this.RawFloat.ToString();
     }
 
- 
-
     public int CompareTo(VInt other)
     {
         return i.CompareTo(other.i);

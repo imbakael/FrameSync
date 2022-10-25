@@ -6,7 +6,7 @@ using UnityEngine;
 public class BattleRule {
 
     public static VInt CalculateDamgae(SkillConfig skillConfig, HeroLogic attacker, HeroLogic attackTarget) {
-        VInt rawDamage = new VInt(0);
+        var rawDamage = new VInt(0);
         VInt damageRate = attackTarget.Def / (attacker.Atk + attackTarget.Def);
         switch (skillConfig.damageType) {
             case DamageType.None:

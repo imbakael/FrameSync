@@ -23,7 +23,6 @@ public class Skill {
         this.skillOwner = (HeroLogic)skillOwner;
         this.isNormalAtk = isNormalAtk;
         SkillConfig = SkillConfigCenter.LoadSkillConfig(skillId);
-        
     }
 
     public void ReleaseSkill() {
@@ -35,7 +34,7 @@ public class Skill {
         } else if (SkillConfig.skillType == SkillType.Chant) {
             SkillChant(SkillTrigger);
         } else if (SkillConfig.skillType == SkillType.Ballistic) {
-
+            LogicTimerManager.Instance.DelayCall(SkillConfig.skillShakeBeforeTimeMs, CreateBullet);
         }
     }
 
@@ -47,8 +46,13 @@ public class Skill {
         skillOwner.PlayAnim(SkillConfig.skillAnim);
     }
 
+    public void CreateBullet() {
+        var skillTarget = BattleRule.GetNormalAttackTarget(WorldManager.BattleWorld.heroLogic.GetHeroListByTeam(skillOwner, (HeroTeamEnum)SkillConfig.targetType), skillOwner.HeroData.seatid);
+        BulletManager.Instance.CreateBullet(SkillConfig.bullet, skillOwner, skillTarget, SkillConfig.skillAttackDurationMs, SkillTrigger);
+    }
+
     public void SkillChant(Action chantFinish) {
-        LogicTimerManager.Instance.DelayCall((VInt)SkillConfig.skillShakeBeforeTimeMs, chantFinish);
+        LogicTimerManager.Instance.DelayCall(SkillConfig.skillShakeBeforeTimeMs, chantFinish);
     }
 
     public void MoveToTarget(Action moveFinish) {
@@ -59,7 +63,7 @@ public class Skill {
             VInt z = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? new VInt(-3).Int : new VInt(3).Int;
             targetPos.z -= z.RawInt;
         }
-        MoveToAction action = new MoveToAction(skillOwner, targetPos, (VInt)SkillConfig.skillShakeBeforeTimeMs, moveFinish);
+        var action = new MoveToAction(skillOwner, targetPos, SkillConfig.skillShakeBeforeTimeMs, moveFinish);
         ActionManager.Instance.RunAction(action);
     }
 
@@ -72,7 +76,7 @@ public class Skill {
         AddBuff();
         SkillShakeAfter();
         if (SkillConfig.skillAttackDurationMs > 0) {
-            LogicTimerManager.Instance.DelayCall((VInt)SkillConfig.skillAttackDurationMs, () => { MoveToSeat(SkillEnd); });
+            LogicTimerManager.Instance.DelayCall(SkillConfig.skillAttackDurationMs, () => { MoveToSeat(SkillEnd); });
         } else {
             MoveToSeat(SkillEnd);
         }
@@ -134,7 +138,7 @@ public class Skill {
         Transform[] seatTransArr = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? BattleWorldNodes.Instance.enemyTransArr : BattleWorldNodes.Instance.heroTransArr;
         seatPos = new VInt3(seatTransArr[skillOwner.HeroData.seatid].position);
 #endif
-        MoveToAction action = new MoveToAction(skillOwner, seatPos, (VInt)SkillConfig.skillShakeAfterTimeMs, moveFinish);
+        var action = new MoveToAction(skillOwner, seatPos, (VInt)SkillConfig.skillShakeAfterTimeMs, moveFinish);
         ActionManager.Instance.RunAction(action);
     }
 

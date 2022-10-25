@@ -13,7 +13,7 @@ public class LogicTimerManager : SingletonMono<LogicTimerManager>, ILogicBehavio
 
     public void DelayCall(VInt delayTime, Action callback, int loop = 1) {
 #if CLIENT_LOGIC
-        LogicTimer logicTimer = new LogicTimer(delayTime, callback, loop);
+        var logicTimer = new LogicTimer(delayTime, callback, loop);
         logicTimers.Add(logicTimer);
 #else
         for (int i = 0; i < loop; i++) {

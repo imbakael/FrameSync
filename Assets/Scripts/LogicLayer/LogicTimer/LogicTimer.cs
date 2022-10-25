@@ -17,11 +17,11 @@ public class LogicTimer : ILogicBehaviour {
         this.OnTimerComplete = callback;
     }
     public void OnCreate() {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnDestroy() {
-        throw new System.NotImplementedException();
+        
     }
 
     public void OnLogicFrameUpdate() {

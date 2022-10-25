@@ -16,7 +16,7 @@ public class BattleWorld {
         heroLogic.OnCreate(playerHeroList, enemyHeroList);
         roundLogic.OnCreate();
     }
-    
+     
     public void OnUpdate() {
 #if CLIENT_LOGIC
         accLogicRuntime += Time.deltaTime;
@@ -57,6 +57,9 @@ public class BattleWorld {
             SkillManager.Instance.ReleaseSkill(1041, heroLogic.heroList[3], false);
             heroLogic.heroList[3].TryClearRage();
         }
+        if (Input.GetKeyDown(KeyCode.F)) {
+            SkillManager.Instance.ReleaseSkill(1040, heroLogic.heroList[3], true);
+        }
     }
 
     public void OnLogicFrameUpdate() {
@@ -64,6 +67,7 @@ public class BattleWorld {
         roundLogic?.OnLogicFrameUpdate();
         ActionManager.Instance.OnLogicFrameUpdate();
         LogicTimerManager.Instance.OnLogicFrameUpdate();
+        BulletManager.Instance.OnLogicFrameUpdate();
     }
 
     public void OnDestroyWorld() {
