@@ -52,6 +52,11 @@ public class BattleWorld {
             SkillManager.Instance.ReleaseSkill(1011, heroLogic.heroList[0], false);
             heroLogic.heroList[0].UpdateAnger(0);
         }
+        if (Input.GetKeyDown(KeyCode.D)) {
+            heroLogic.heroList[3].TryClearRage();
+            SkillManager.Instance.ReleaseSkill(1041, heroLogic.heroList[3], false);
+            heroLogic.heroList[3].TryClearRage();
+        }
     }
 
     public void OnLogicFrameUpdate() {

@@ -33,7 +33,7 @@ public class Skill {
         if (SkillConfig.skillType == SkillType.MoveToAttack || SkillConfig.skillType == SkillType.MoveToCenter || SkillConfig.skillType == SkillType.MoveToEnemyCenter) {
             MoveToTarget(SkillTrigger);
         } else if (SkillConfig.skillType == SkillType.Chant) {
-
+            SkillChant(SkillTrigger);
         } else if (SkillConfig.skillType == SkillType.Ballistic) {
 
         }
@@ -45,6 +45,10 @@ public class Skill {
 
     public void PlaySkillAnim() {
         skillOwner.PlayAnim(SkillConfig.skillAnim);
+    }
+
+    public void SkillChant(Action chantFinish) {
+        LogicTimerManager.Instance.DelayCall((VInt)SkillConfig.skillShakeBeforeTimeMs, chantFinish);
     }
 
     public void MoveToTarget(Action moveFinish) {
