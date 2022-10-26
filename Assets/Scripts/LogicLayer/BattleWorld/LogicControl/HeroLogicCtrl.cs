@@ -69,7 +69,12 @@ public class HeroLogicCtrl : ILogicBehaviour {
     }
         
     public void OnDestroy() {
-        
+        foreach (var item in allHeroList) {
+            item.OnDestroy();
+        }
+        allHeroList.Clear();
+        heroList.Clear();
+        enemyList.Clear();
     }
 
     public void OnLogicFrameUpdate() {

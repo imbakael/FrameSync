@@ -8,4 +8,9 @@ public class BattleWorldNodes : SingletonMono<BattleWorldNodes> {
     public Camera uiCamera;
 
     public RoundWindow roundWindow;
+    public BattleResultWindow battleResultWindow;
+
+    public Transform centerTrans;
+    public Transform enemyCenterTrans;
+    public Transform selfHeroCenterTrans;
 }

@@ -62,6 +62,11 @@ public class Skill {
             targetPos = new VInt3(skillTarget.LogicPosition.x, skillTarget.LogicPosition.y, skillTarget.LogicPosition.z);
             VInt z = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? new VInt(-3).Int : new VInt(3).Int;
             targetPos.z -= z.RawInt;
+        } else if (SkillConfig.skillType == SkillType.MoveToEnemyCenter) {
+            targetPos = new VInt3(skillOwner.HeroTeam == HeroTeamEnum.Enemy ? BattleWorldNodes.Instance.selfHeroCenterTrans.position : BattleWorldNodes.Instance.enemyCenterTrans.position);
+
+        } else if (SkillConfig.skillType == SkillType.MoveToCenter) {
+            targetPos = new VInt3(BattleWorldNodes.Instance.centerTrans.position);
         }
         var action = new MoveToAction(skillOwner, targetPos, SkillConfig.skillShakeBeforeTimeMs, moveFinish);
         ActionManager.Instance.RunAction(action);

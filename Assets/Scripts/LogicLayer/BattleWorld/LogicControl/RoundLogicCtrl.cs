@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class RoundLogicCtrl : ILogicBehaviour {
@@ -55,12 +54,12 @@ public class RoundLogicCtrl : ILogicBehaviour {
     public bool CheckBattleOver() {
         if (heroLogicCtrl.HeroIsAllDead(HeroTeamEnum.Self)) {
             Debugger.Log("我方全挂");
-            BattleWorld.battleEnd = true;
+            WorldManager.BattleWorld.BattleEnd(false);
             return true;
         }
         if (heroLogicCtrl.HeroIsAllDead(HeroTeamEnum.Enemy)) {
             Debugger.Log("敌人全灭");
-            BattleWorld.battleEnd = true;
+            WorldManager.BattleWorld.BattleEnd(false);
             return true;
         }
         return false;

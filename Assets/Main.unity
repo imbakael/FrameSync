@@ -4049,6 +4049,10 @@ MonoBehaviour:
   camera3D: {fileID: 963194227}
   uiCamera: {fileID: 1065413756}
   roundWindow: {fileID: 2141706354}
+  battleResultWindow: {fileID: 5350629840898627463}
+  centerTrans: {fileID: 684210824}
+  enemyCenterTrans: {fileID: 1978474452}
+  selfHeroCenterTrans: {fileID: 2055587314}
 --- !u!1 &1521939194
 GameObject:
   m_ObjectHideFlags: 0
@@ -6856,7 +6860,7 @@ GameObject:
   - component: {fileID: 5350629840898627458}
   - component: {fileID: 5350629840898627459}
   - component: {fileID: 5350629840898627456}
-  - component: {fileID: 5350629840898627469}
+  - component: {fileID: 5350629840898627463}
   m_Layer: 5
   m_Name: BattleResultWindow
   m_TagString: Untagged
@@ -6864,7 +6868,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &5350629840898627469
+--- !u!114 &5350629840898627463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6873,9 +6877,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5350629840898627462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d1c6bc327259742858c91fd8d6ca05, type: 3}
+  m_Script: {fileID: 11500000, guid: a512f1bef7e724046a12f656d3b71bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultText: {fileID: 5350629840539523784}
 --- !u!1 &5350629841000366050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6938,8 +6943,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5350629840898627469}
-        m_MethodName: ResetPlayButtonClick
+      - m_Target: {fileID: 5350629840898627463}
+        m_MethodName: OnRestGameButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7068,8 +7073,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5350629840898627469}
-        m_MethodName: BackPlayButtonClick
+      - m_Target: {fileID: 5350629840898627463}
+        m_MethodName: OnBackPlayButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

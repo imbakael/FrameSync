@@ -115,5 +115,9 @@ public class HeroLogic : LogicObject {
 
     public override void OnDestroy() {
         base.OnDestroy();
+        OnActionEnd = null;
+#if RENDER_LOGIC
+        HeroRender.OnRelease();
+#endif
     }
 }

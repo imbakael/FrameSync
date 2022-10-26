@@ -22,6 +22,13 @@ public class BattleWorld {
         heroLogic.OnCreate(playerHeroList, enemyHeroList);
         roundLogic.OnCreate();
         battleEnd = false;
+        LogicFrameSyncConfig.LogicFrameId = 0;
+        deltaTime = 0;
+#if CLIENT_LOGIC
+        BattleDataModel dataModel = new BattleDataModel { herolist = playerHeroList, enemylist = enemyHeroList };
+        string json = Newtonsoft.Json.JsonConvert.SerializeObject(dataModel);
+        PlayerPrefs.SetString(BattleDataModel.key, json);
+#endif
     }
 
     public void OnUpdate() {
@@ -95,8 +102,19 @@ public class BattleWorld {
 #endif
     }
 
+    public void BattleEnd(bool isWin) {
+        battleEnd = true;
+#if RENDER_LOGIC
+        BattleWorldNodes.Instance.battleResultWindow.SetBattleResult(isWin);
+#endif
+        OnDestroyWorld();
+    }
+
     public void OnDestroyWorld() {
         heroLogic.OnDestroy();
         roundLogic.OnDestroy();
+        SkillManager.Instance.OnDestroy();
+        LogicTimerManager.Instance.OnDestroy();
+        ActionManager.Instance.OnDestroy();
     }
 }

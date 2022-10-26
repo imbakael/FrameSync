@@ -27,4 +27,8 @@ public class HeroHUDComponent : MonoBehaviour
         angerSlider.value = value;
         angerSlider.gameObject.SetActive(value != 0);
     }
+
+    public void OnRelease() {
+        Destroy(gameObject);
+    }
 }
