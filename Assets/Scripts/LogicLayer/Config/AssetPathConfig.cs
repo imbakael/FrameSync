@@ -6,4 +6,5 @@ public class AssetPathConfig {
     public const string SKILL_EFFECT = PREFABS + "SkillEffect/";
     public const string BUFF_EFFECT = PREFABS + "BuffEffect/";
     public const string SKILL_CONFIG = "Skill/";
+    public const string BUFF_CONFIG = "Buff/";
 }

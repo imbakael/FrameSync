@@ -31,6 +31,32 @@ public class BattleRule {
         return rawDamage;
     }
 
+    public static VInt CalculateDamgae(BuffConfig buffConfig, HeroLogic attacker, HeroLogic attackTarget) {
+        var rawDamage = new VInt(0);
+        VInt damageRate = attackTarget.Def / (attacker.Atk + attackTarget.Def);
+        switch (buffConfig.damageType) {
+            case BuffDamageType.None:
+                break;
+            case BuffDamageType.NormalAttack:
+                rawDamage = attacker.Atk - attacker.Atk * damageRate;
+                break;
+            case BuffDamageType.Real:
+                rawDamage = attacker.Atk;
+                break;
+            case BuffDamageType.AtkPercentage:
+                VInt atkMultiple = buffConfig.damagePercentage / new VInt(100);
+                VInt totalDamage = attacker.Atk * atkMultiple;
+                rawDamage = totalDamage - (totalDamage * damageRate);
+                break;
+            case BuffDamageType.HpPercentage:
+                VInt hpMultiple = buffConfig.damagePercentage / new VInt(100);
+                VInt hpTotalDamage = attacker.HP * hpMultiple;
+                rawDamage = hpTotalDamage - (hpTotalDamage * damageRate);
+                break;
+        }
+        return rawDamage;
+    }
+
     public static List<HeroLogic> GetAttackListByAttackType(SkillAttackType attackType, List<HeroLogic> herolist, int attackSeatId) {
         var attackList = new List<HeroLogic>();
         switch (attackType) {

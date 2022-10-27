@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class HeroLogic : LogicObject {
 
     protected VInt hp;
@@ -65,7 +61,7 @@ public class HeroLogic : LogicObject {
         OnActionEnd?.Invoke();
     }
 
-    public void DamageHP(VInt damageHp) {
+    public void DamageHP(VInt damageHp, BuffConfig buffConfig = null) {
         if (damageHp == 0) {
             return;
         }
@@ -73,8 +69,11 @@ public class HeroLogic : LogicObject {
         if (hp <= 0) {
             hp = 0;
             HeroDeath();
+            return;
         } else {
-            PlayAnim("OnHit");
+            if (damageHp > 0) {
+                PlayAnim("OnHit");
+            }
         }
         Debugger.Log("id = " + ID + ", 损失血量 = " + damageHp + ", 剩余血量 = " + hp);
 #if RENDER_LOGIC
@@ -111,6 +110,15 @@ public class HeroLogic : LogicObject {
 #if RENDER_LOGIC
         HeroRender.PlayAnim(animName);
 #endif
+    }
+
+    public void BuffDamage(VInt hp, BuffConfig buffConfig) {
+        Debugger.Log("buffdamage = " + hp);
+        DamageHP(hp, buffConfig);
+    }
+
+    public void RemoveBuff(BuffLogic buff) {
+
     }
 
     public override void OnDestroy() {

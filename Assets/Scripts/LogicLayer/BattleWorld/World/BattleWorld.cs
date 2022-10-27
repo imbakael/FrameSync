@@ -85,6 +85,7 @@ public class BattleWorld {
         ActionManager.Instance.OnLogicFrameUpdate();
         LogicTimerManager.Instance.OnLogicFrameUpdate();
         BulletManager.Instance.OnLogicFrameUpdate();
+        BuffManager.Instance.OnLogicFrameUpdate();
     }
 
     public void PauseBattle() {

@@ -78,7 +78,7 @@ public class Skill {
         }
         List<HeroLogic> herolist = TakeDamage();
         CreateSkillEffect(herolist);
-        AddBuff();
+        AddBuff(herolist);
         SkillShakeAfter();
         if (SkillConfig.skillAttackDurationMs > 0) {
             LogicTimerManager.Instance.DelayCall(SkillConfig.skillAttackDurationMs, () => { MoveToSeat(SkillEnd); });
@@ -129,8 +129,14 @@ public class Skill {
         return attackHeroList;
     }
 
-    public void AddBuff() {
-
+    public void AddBuff(List<HeroLogic> targetList) {
+        if (SkillConfig.addBuffs != null && SkillConfig.addBuffs.Length > 0) {
+            foreach (var target in targetList) {
+                for (int i = 0; i < SkillConfig.addBuffs.Length; i++) {
+                    BuffManager.Instance.CreateBuff(SkillConfig.addBuffs[i], skillOwner, target);
+                }
+            }
+        }
     }
 
     public void SkillShakeAfter() {
@@ -138,13 +144,18 @@ public class Skill {
     }
 
     public void MoveToSeat(Action moveFinish) {
-        VInt3 seatPos = VInt3.zero;
+        if (SkillConfig.skillType == SkillType.Chant || SkillConfig.skillType == SkillType.Ballistic) {
+            LogicTimerManager.Instance.DelayCall(SkillConfig.skillShakeAfterTimeMs, moveFinish);
+        } else {
+            VInt3 seatPos = VInt3.zero;
 #if CLIENT_LOGIC
-        Transform[] seatTransArr = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? BattleWorldNodes.Instance.enemyTransArr : BattleWorldNodes.Instance.heroTransArr;
-        seatPos = new VInt3(seatTransArr[skillOwner.HeroData.seatid].position);
+            Transform[] seatTransArr = skillOwner.HeroTeam == HeroTeamEnum.Enemy ? BattleWorldNodes.Instance.enemyTransArr : BattleWorldNodes.Instance.heroTransArr;
+            seatPos = new VInt3(seatTransArr[skillOwner.HeroData.seatid].position);
 #endif
-        var action = new MoveToAction(skillOwner, seatPos, SkillConfig.skillShakeAfterTimeMs, moveFinish);
-        ActionManager.Instance.RunAction(action);
+            var action = new MoveToAction(skillOwner, seatPos, SkillConfig.skillShakeAfterTimeMs, moveFinish);
+            ActionManager.Instance.RunAction(action);
+        }
+
     }
 
     public void SkillEnd() {
