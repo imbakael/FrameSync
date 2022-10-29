@@ -15,17 +15,17 @@ MonoBehaviour:
   hideDamagePercentage: 0
   buffIcon: {fileID: 21300000, guid: b485795d3f576604e874a72a7df8a39b, type: 3}
   buffId: 10410
-  buffName: "\u4E00\u6B21\u6027\u4F24\u5BB3"
+  buffName: "\u591A\u6BB5\u4F24\u5BB3"
   maxStack: 0
-  buffDurationTimeMs: 0
+  buffDurationTimeMs: 1000
   buffDurationRound: 0
-  buffTriggerIntervalMs: 0
+  buffTriggerIntervalMs: 300
   buffTriggerProbability: 100
   buffType: 0
   buffState: 0
-  triggerType: 0
+  triggerType: 1
   damageType: 3
-  damagePercentage: 160
+  damagePercentage: 60
   buffAudio: {fileID: 0}
   buffEffect: 
   buffDes: 

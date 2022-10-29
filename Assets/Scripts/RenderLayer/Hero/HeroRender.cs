@@ -40,6 +40,10 @@ public class HeroRender : RenderObject
         animator.SetTrigger(animName);
     }
 
+    public void SetAnimState(AnimState state) {
+        animator.speed = state == AnimState.StopAnim ? 0 : 1;
+    }
+
     public void UpdateHPHud(int damage, float hpRate) {
         GameObject damageTextObj = ResourceManager.Instance.LoadObject(AssetPathConfig.HUD + (damage > 0 ? "DamageText" : "RestoreHPText"), BattleWorldNodes.Instance.HUDWindowTrans, resetScale:true);
         Vector2 pos = World3DToCanvasPos(transform.position);

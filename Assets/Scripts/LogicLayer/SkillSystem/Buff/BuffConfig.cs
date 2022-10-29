@@ -47,7 +47,8 @@ public class BuffConfig : ScriptableObject {
     public string buffDes;
 
     public void DamageTypeChange(BuffDamageType damageType) {
-        hideDamagePercentage = damageType != BuffDamageType.AtkPercentage && damageType != BuffDamageType.HpPercentage;
+        hideDamagePercentage = damageType != BuffDamageType.AtkPercentage && damageType != BuffDamageType.HpPercentage
+            && damageType != BuffDamageType.None;
     }
 }
 
@@ -66,7 +67,9 @@ public enum BuffState {
     [LabelText("生命值回复减少")] HpRecoveryReduce,
     [LabelText("灼烧")] Burn,
     [LabelText("净化")] Purify,
-    [LabelText("冰冻")] Forzen
+    [LabelText("冰冻")] Forzen,
+    [LabelText("攻击力增加")] AtkAdd,
+    [LabelText("防御力增加")] DefAdd
 }
 
 public enum BuffTriggerType {

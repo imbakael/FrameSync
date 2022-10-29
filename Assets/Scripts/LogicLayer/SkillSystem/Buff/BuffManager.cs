@@ -18,7 +18,10 @@ public class BuffManager : SingletonMono<BuffManager>, ILogicBehaviour {
     }
 
     public void OnDestroy() {
-        
+        for (int i = 0; i < buffList.Count; i++) {
+            buffList[i].OnDestroy();
+        }
+        buffList.Clear();
     }
 
     public void OnLogicFrameUpdate() {

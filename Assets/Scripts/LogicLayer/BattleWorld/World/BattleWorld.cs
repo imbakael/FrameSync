@@ -21,6 +21,7 @@ public class BattleWorld {
         roundLogic = new RoundLogicCtrl();
         heroLogic.OnCreate(playerHeroList, enemyHeroList);
         roundLogic.OnCreate();
+        LogicRandom.Instance.InitRandom(3);
         battleEnd = false;
         LogicFrameSyncConfig.LogicFrameId = 0;
         deltaTime = 0;
@@ -108,7 +109,6 @@ public class BattleWorld {
 #if RENDER_LOGIC
         BattleWorldNodes.Instance.battleResultWindow.SetBattleResult(isWin);
 #endif
-        OnDestroyWorld();
     }
 
     public void OnDestroyWorld() {
@@ -117,5 +117,6 @@ public class BattleWorld {
         SkillManager.Instance.OnDestroy();
         LogicTimerManager.Instance.OnDestroy();
         ActionManager.Instance.OnDestroy();
+        BuffManager.Instance.OnDestroy();
     }
 }

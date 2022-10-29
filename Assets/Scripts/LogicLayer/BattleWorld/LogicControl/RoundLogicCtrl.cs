@@ -54,7 +54,7 @@ public class RoundLogicCtrl : ILogicBehaviour {
     public bool CheckBattleOver() {
         if (heroLogicCtrl.HeroIsAllDead(HeroTeamEnum.Self)) {
             Debugger.Log("我方全挂");
-            WorldManager.BattleWorld.BattleEnd(false);
+            WorldManager.BattleWorld.BattleEnd(true);
             return true;
         }
         if (heroLogicCtrl.HeroIsAllDead(HeroTeamEnum.Enemy)) {

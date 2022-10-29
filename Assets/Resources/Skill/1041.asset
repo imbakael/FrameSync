@@ -31,5 +31,5 @@ MonoBehaviour:
   skillAudio: {fileID: 0}
   skillEffect: Effect_Longwang_skill
   skillHitEffect: 
-  addBuffs: aa280000
+  addBuffs: aa28000010270000
   skillDes: 

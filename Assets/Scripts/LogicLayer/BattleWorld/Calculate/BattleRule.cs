@@ -57,6 +57,12 @@ public class BattleRule {
         return rawDamage;
     }
 
+    public static VInt CalculateAddDef(int value, HeroLogic attackTarget) {
+        VInt rate = new VInt(value) / new VInt(100);
+        var addDef = attackTarget.def * rate;
+        return addDef;
+    }
+
     public static List<HeroLogic> GetAttackListByAttackType(SkillAttackType attackType, List<HeroLogic> herolist, int attackSeatId) {
         var attackList = new List<HeroLogic>();
         switch (attackType) {

@@ -1,24 +1,35 @@
-﻿
+﻿using System.Collections.Generic;
+using System.Linq;
+
+public enum AnimState {
+    StopAnim,
+    RePlayAnim
+}
 public class HeroLogic : LogicObject {
 
     protected VInt hp;
-    protected VInt atk;
-    protected VInt def;
+    public VInt atk;
+    public VInt def;
     protected VInt agl;
     protected VInt rage;
 
+    public VInt addDef;
     public VInt HP { get { return hp; } }
     public VInt MaxHP { get; protected set; }
     public VInt Atk { get { return atk; } }
-    public VInt Def { get { return def; } }
+    public VInt Def { get { return def + addDef; } }
     public VInt Agl { get { return agl; } }
     public VInt Rage { get { return rage; } }
     public VInt MaxRage { get { return 100; } }
 
     public int ID => HeroData.id;
     public HeroData HeroData { get; private set; }
+#if RENDER_LOGIC
     public HeroRender HeroRender { get; private set; }
+#endif
     public HeroTeamEnum HeroTeam { get; private set; }
+
+    public List<BuffLogic> haveBuffList = new List<BuffLogic>();
 
     public HeroLogic(HeroData heroData, HeroTeamEnum heroTeam) {
         HeroData = heroData;
@@ -32,7 +43,9 @@ public class HeroLogic : LogicObject {
     }
     public override void OnCreate() {
         base.OnCreate();
+#if RENDER_LOGIC
         HeroRender = (HeroRender)RenderObj;
+#endif
         UpdateAnger(rage);
         //Debugger.Log("heroname = " + RenderObj.gameObject.name);
     }
@@ -43,7 +56,7 @@ public class HeroLogic : LogicObject {
 
     public override void ActionStart() {
         base.ActionStart();
-        if (objectState == LogicObjectState.Death) {
+        if (objectState == LogicObjectState.Death || IsBeControl()) {
             ActionEnd();
             return;
         }
@@ -82,6 +95,20 @@ public class HeroLogic : LogicObject {
 #endif
     }
 
+    public override void RoundStartEvent(int round) {
+        base.RoundStartEvent(round);
+        for (int i = haveBuffList.Count - 1; i >= 0; i--) {
+            haveBuffList[i].RoundStartEvent(round);
+        }
+    }
+
+    public override void RoundEndEvent() {
+        base.RoundEndEvent();
+        for (int i = haveBuffList.Count - 1; i >= 0; i--) {
+            haveBuffList[i].RoundEndEvent();
+        }
+    }
+
     public void UpdateAnger(VInt anger) {
         rage += anger;
         if (rage > MaxRage) {
@@ -103,7 +130,9 @@ public class HeroLogic : LogicObject {
         objectState = LogicObjectState.Death;
 #if RENDER_LOGIC
         HeroRender.Death();
+        SetAnimState(AnimState.RePlayAnim);
 #endif
+        ClearBuff();
     }
 
     public void PlayAnim(string animName) {
@@ -112,20 +141,77 @@ public class HeroLogic : LogicObject {
 #endif
     }
 
+    public void SetAnimState(AnimState state) {
+#if RENDER_LOGIC
+        HeroRender.SetAnimState(state);
+#endif
+    }
+
+    public int GetBuffCount(int buffId) {
+        int result = 0;
+        for (int i = 0; i < haveBuffList.Count; i++) {
+            if (buffId == haveBuffList[i].BuffId) {
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public void RefreshBuffDurationRound(int buffId) {
+        for (int i = 0; i < haveBuffList.Count; i++) {
+            if (haveBuffList[i].BuffId == buffId) {
+                haveBuffList[i].RefreshBuffDurationRound();
+            }
+        }
+    }
+
     public void BuffDamage(VInt hp, BuffConfig buffConfig) {
         Debugger.Log("buffdamage = " + hp);
         DamageHP(hp, buffConfig);
     }
 
-    public void RemoveBuff(BuffLogic buff) {
+    public bool IsBeControl() {
+        bool result = haveBuffList.Any(t => t.BuffConfig.buffType == BuffType.Control);
+        if (result) {
+            Debugger.Log(HeroData.name + " 被冰冻");
+        }
+        return result;
+    }
 
+    public void AddBuff(BuffLogic buff) {
+        int buffId = buff.BuffId;
+        if (buff.BuffConfig.maxStack >= 1) {
+           int count = GetBuffCount(buffId);
+            if (count >= buff.BuffConfig.maxStack) {
+                return;
+            }
+            haveBuffList.Add(buff);
+            if (buff.BuffConfig.buffState == BuffState.DefAdd) {
+                 addDef += BattleRule.CalculateAddDef(buff.BuffConfig.damagePercentage, this).RawInt;
+            }
+        } else {
+            haveBuffList.Add(buff);
+        }
+    }
+
+    public void RemoveBuff(BuffLogic buff) {
+        if (haveBuffList.Contains(buff)) {
+            if (buff.BuffConfig.buffState == BuffState.DefAdd) {
+                addDef -= BattleRule.CalculateAddDef(buff.BuffConfig.damagePercentage, this).RawInt;
+            }
+            haveBuffList.Remove(buff);
+        }
+    }
+
+    public void ClearBuff() {
+        for (int i = haveBuffList.Count - 1; i >= 0; i--) {
+            haveBuffList[i].OnDestroy();
+        }
     }
 
     public override void OnDestroy() {
         base.OnDestroy();
         OnActionEnd = null;
-#if RENDER_LOGIC
-        HeroRender.OnRelease();
-#endif
+        ClearBuff();
     }
 }

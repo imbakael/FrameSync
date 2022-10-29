@@ -10,6 +10,7 @@ public class WorldManager {
     }
 
     public static void CreateBattleWorld(List<HeroData> playerHeroList, List<HeroData> enemyHeroList) {
+        BattleWorld?.OnDestroyWorld();
         BattleWorld = new BattleWorld();
         BattleWorld.OnCreateWorld(playerHeroList, enemyHeroList);
     }

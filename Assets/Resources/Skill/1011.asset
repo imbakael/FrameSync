@@ -31,5 +31,5 @@ MonoBehaviour:
   skillAudio: {fileID: 0}
   skillEffect: Effect_RenMa_skill
   skillHitEffect: Effect_RenMa_hit
-  addBuffs: 
+  addBuffs: 11270000
   skillDes: "\u65AD\u5934\u65A9"

@@ -15,7 +15,7 @@ MonoBehaviour:
   hideBullet: 1
   hideDamagePercentage: 1
   skillIcon: {fileID: 21300000, guid: 74a6ed17658b8b0429d4322bc10d654e, type: 3}
-  skillId: 5021
+  skillId: 5031
   skillName: "\u7280\u725B\u738B\u6280\u80FD"
   needRageValue: 100
   skillShakeBeforeTimeMs: 700
@@ -31,5 +31,5 @@ MonoBehaviour:
   skillAudio: {fileID: 0}
   skillEffect: 
   skillHitEffect: 
-  addBuffs: 
+  addBuffs: 86c40000
   skillDes: 
